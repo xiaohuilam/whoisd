@@ -226,7 +226,7 @@ Name Server: ns3.example.com
 ]
 ```
 
-- "hide" - if this option is set to 'true', a value of the field will not shown in whois output
+- "hide" - if this option is set to 'true' and value is empty the field will not shown in whois output
 
 ```json
 [

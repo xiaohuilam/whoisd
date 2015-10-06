@@ -219,9 +219,7 @@ func detachTLD(query string) (TLD string) {
 func prepareAnswer(entry *mapper.Entry, keys []string) (answer string) {
 	for _, index := range keys {
 		key := entry.Fields[index].Key
-		if entry.Fields[index].Hide == true {
-			answer = strings.Join([]string{answer, key, "", "\n"}, "")
-		} else {
+		if entry.Fields[index].Hide != true || len(entry.Fields[index].Value) > 0 {
 			if strings.Contains(entry.Fields[index].Format, "{idn}") == true {
 				entry.Fields[index] = decodeIDN(entry.Fields[index])
 			}
