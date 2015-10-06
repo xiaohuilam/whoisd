@@ -37,6 +37,12 @@ func TestStorage(t *testing.T) {
 		Format:  "{idn}",
 		Related: "name",
 	}
+	entry.Fields["02"] = mapper.Field{
+		Key:     "Registry Domain ID: ",
+		Name:    []string{"domainId"},
+		Hide:    true,
+		Related: "name",
+	}
 	entry.Fields["03"] = mapper.Field{
 		Key:   "Registrar WHOIS Server: ",
 		Value: []string{"whois.markmonitor.com"},
@@ -102,7 +108,7 @@ Updated Date: 2014-05-19T04:00:17Z
 Domain Status: clientUpdateProhibited
 Domain Status: clientTransferProhibited
 Domain Status: clientDeleteProhibited
-Registry Registrant ID: 
+Registry Registrant ID: MMR-2383
 Registrant Phone: +1.6502530000
 Name Server: ns1.google.com
 Name Server: ns2.google.com
