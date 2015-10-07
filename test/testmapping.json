@@ -1,6 +1,6 @@
 [
   {
-    "TLDs": ["xn--p1ai"],
+    "TLDs": ["ru", "xn--p1ai"],
     "Fields" : {
       "01": {
         "key": "domain: ",
@@ -8,6 +8,85 @@
         "format": "{idn}",
         "multiple": true,
         "related": "name"
+      },
+      "02": {
+        "key": "nserver: ",
+        "name": ["name"],
+        "multiple": true,
+        "related": "nsgroupId",
+        "relatedBy": "nsgroupId",
+        "relatedTo": "nameserver"
+      },
+      "03": {
+        "key": "state: ",
+        "name": ["domainStatus"],
+        "related": "name"
+      },
+      "04": {
+        "key": "org: ",
+        "name": ["companyName"],
+        "hide": true,
+        "related": "ownerHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer"
+      },
+      "05": {
+        "key": "person: ",
+        "name": ["name.firstName", "name.lastName"],
+        "hide": true,
+        "related": "ownerHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer"
+      },
+      "06": {
+        "key": "phone: ",
+        "name": ["phone.countryCode", "phone.areaCode", "phone.subscriberNumber"],
+        "hide": true,
+        "related": "ownerHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer"
+      },
+      "07": {
+        "key": "fax-no: ",
+        "name": ["fax.countryCode", "fax.areaCode", "fax.subscriberNumber"],
+        "hide": true,
+        "related": "ownerHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer"
+      },
+      "08": {
+        "key": "registrar: ",
+        "value": ["REGISTRATOR-REG-RF"]
+      },
+      "09": {
+        "key": "admin-contact: ",
+        "name": ["handle"],
+        "format": "https://www.example.ru/{handle}",
+        "related": "adminHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer"
+      },
+      "10": {
+        "key": "created: ",
+        "name": ["creationDate"],
+        "format": "{shortdate}",
+        "related": "name"
+      },
+      "11": {
+        "key": "paid-till: ",
+        "name": ["expirationDate"],
+        "format": "{shortdate}",
+        "related": "name"
+      },
+      "12": {
+        "key": "free-date: ",
+        "name": ["freeDate"],
+        "format": "{shortdate}",
+        "related": "name"
+      },
+      "13": {
+        "key": "source: ",
+        "value": ["MASTERNAME"]
       }
     }
   },
