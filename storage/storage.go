@@ -219,23 +219,30 @@ func detachTLD(query string) (TLD string) {
 func prepareAnswer(entry *mapper.Entry, keys []string) (answer string) {
 	for _, index := range keys {
 		key := entry.Fields[index].Key
-		if entry.Fields[index].Hide != true || len(entry.Fields[index].Value) > 0 {
-			if strings.Contains(entry.Fields[index].Format, "{idn}") == true {
-				entry.Fields[index] = decodeIDN(entry.Fields[index])
-			}
-			if entry.Fields[index].Multiple == true {
-				for _, value := range entry.Fields[index].Value {
-					answer = strings.Join([]string{answer, key, value, "\n"}, "")
+		if strings.Contains(entry.Fields[index].Format, "{idn}") {
+			entry.Fields[index] = decodeIDN(entry.Fields[index])
+		}
+		if entry.Fields[index].Multiple {
+			for _, value := range entry.Fields[index].Value {
+				if entry.Fields[index].Hide && value == "" {
+					continue
 				}
-			} else {
-				var value string
 				if entry.Fields[index].Format != "" {
-					value = loadTags(entry.Fields[index].Format, entry.Fields[index].Value)
-				} else {
-					value = strings.Join(entry.Fields[index].Value, " ")
+					value = handleTags(entry.Fields[index].Format, []string{value})
 				}
 				answer = strings.Join([]string{answer, key, value, "\n"}, "")
 			}
+		} else {
+			var value string
+			if entry.Fields[index].Format != "" {
+				value = handleTags(entry.Fields[index].Format, entry.Fields[index].Value)
+			} else {
+				value = strings.Trim(strings.Join(entry.Fields[index].Value, " "), " ")
+			}
+			if entry.Fields[index].Hide && value == "" {
+				continue
+			}
+			answer = strings.Join([]string{answer, key, value, "\n"}, "")
 		}
 	}
 
@@ -257,22 +264,28 @@ func decodeIDN(field mapper.Field) mapper.Field {
 	return field
 }
 
-// loads all defined tags from value
-func loadTags(format string, value []string) string {
+// handle all tags defined in format string
+func handleTags(format string, value []string) string {
 	// template of date to parse
-	var templateDateFormat = "2006-01-02 15:04:05"
-
+	const (
+		shortDateFormat = "2006.01.02"
+		longDateFormat  = "2006-01-02 15:04:05"
+	)
 	for _, item := range value {
-		if strings.Contains(format, "{date}") == true {
-			buildTime, err := time.Parse(templateDateFormat, item)
+		if strings.Contains(format, "{date}") || strings.Contains(format, "{shortdate}") {
+			buildTime, err := time.Parse(longDateFormat, item)
 			if err != nil && len(strings.TrimSpace(item)) == 0 {
 				buildTime = time.Now()
 			}
-			format = strings.Replace(format, "{date}", buildTime.Format(time.RFC3339), 1)
+			if strings.Contains(format, "{date}") {
+				format = strings.Replace(format, "{date}", buildTime.Format(time.RFC3339), 1)
+			} else {
+				format = strings.Replace(format, "{shortdate}", buildTime.Format(shortDateFormat), 1)
+			}
 		}
 		format = strings.Replace(format, "{string}", item, 1)
 	}
-	format = strings.Replace(format, "{string}", "", -1)
+	format = strings.NewReplacer("{string}", "", "{date}", "", "{shortdate}", "").Replace(format)
 
 	return strings.Trim(format, ". ")
 }
