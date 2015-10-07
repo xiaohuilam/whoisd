@@ -114,7 +114,7 @@ Name Server: ns1.google.com
 Name Server: ns2.google.com
 Name Server: ns3.google.com
 Name Server: ns4.google.com
->>> Last update of WHOIS database: 2014-06-01T11:00:07Z <<<
+>>> Last update of WHOIS database: 2015-10-01T11:00:07Z <<<
 `
 	if answer != expected {
 		t.Error("Expected answer:\n", expected, "\n, got:\n", answer)
