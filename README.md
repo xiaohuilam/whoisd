@@ -315,7 +315,7 @@ Name Server: ns3.example.com
 ]
 ```
 
-- "replacedBy" - a number of the field which if has not empty value, then this field will not show in whois output, because this field should be replaced by the field specified in 'ReplacedBy'. As a result will be show "Registrant Name: " or "Registrant Organization: " but not all together.
+- "replacedBy" - it contains the number of field that replaces this field. If the field is referenced by "replacedBy" has non-empty value, then this field will not show in whois output, because this field should be replaced by the field specified in 'ReplacedBy'. As a result will be show "Registrant Name: " or "Registrant Organization: " but not all together.
 
 ```json
 [
