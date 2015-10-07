@@ -168,6 +168,12 @@ All required fields for whoisd must be defined in the mapping file. The mapping 
         "format": "{date}",
         "related": "name"
       }
+      "06": {
+        "key": "Expiration Date: ",
+        "name": ["expirationDate"],
+        "format": "{shortdate}",
+        "related": "name"
+      }
 
   }
 ]
@@ -175,6 +181,7 @@ All required fields for whoisd must be defined in the mapping file. The mapping 
 
 - "format" - special instructions to indicate how to display field, the examples shown below
 - "{date}" - used in the format to indicate that the field is a 'date' and need special formatting of the date RFС3339
+- "{shortdate}" - used in the format to indicate that the field is a 'date' and need special formatting of the date in short format like '2006.02.03'
 
 ```json
 [
@@ -259,6 +266,13 @@ Name Server: ns3.example.com
 [
   {
 
+      "01": {
+        "key": "domain: ",
+        "name": ["name"],
+        "format": "{idn}",
+        "multiple": true,
+        "related": "name"
+      },
       "21": {
         "key": "Registrant Phone: ",
         "name": ["phone.countryCode", "phone.areaCode", "phone.subscriberNumber"],
@@ -272,6 +286,7 @@ Name Server: ns3.example.com
 ]
 ```
 
+- "format": "{idn}" - indicate that the field "name" (domain name) need decode according to IDN in UTF-8
 - "format": "{string}.{string}{string}" - indicate that the fields ["phone.countryCode", "phone.areaCode", "phone.subscriberNumber"] need special formatting "{string}.{string}{string}" (they are not simple joined)
 - {string} - represent one string field in format option
 
