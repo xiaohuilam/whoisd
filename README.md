@@ -286,7 +286,7 @@ Name Server: ns3.example.com
 ]
 ```
 
-- "format": "{idn}" - indicate that the field "name" (domain name) need decode according to IDN in UTF-8
+- "format": "{idn}" - indicate that the field "name" (domain name) need to decode according to IDN in UTF-8
 - "format": "{string}.{string}{string}" - indicate that the fields ["phone.countryCode", "phone.areaCode", "phone.subscriberNumber"] need special formatting "{string}.{string}{string}" (they are not simple joined)
 - {string} - represent one string field in format option
 
