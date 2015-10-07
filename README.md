@@ -290,6 +290,33 @@ Name Server: ns3.example.com
 - "format": "{string}.{string}{string}" - indicate that the fields ["phone.countryCode", "phone.areaCode", "phone.subscriberNumber"] need special formatting "{string}.{string}{string}" (they are not simple joined)
 - {string} - represent one string field in format option
 
+
+```json
+[
+  {
+
+      "14": {
+        "key": "Registrant Name: ",
+        "name": ["name.firstName", "name.lastName"],
+        "related": "ownerHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer",
+        "replacedBy": "15"
+      },
+      "15": {
+        "key": "Registrant Organization: ",
+        "name": ["companyName"],
+        "related": "ownerHandle",
+        "relatedBy": "handle",
+        "relatedTo": "customer"
+      },
+
+  }
+]
+```
+
+- "replacedBy" - a number of the field which if has not empty value, then this field will not show in whois output, because this field should be replaced by the field specified in 'ReplacedBy'. As a result will be show "Registrant Name: " or "Registrant Organization: " but not all together.
+
 ```json
 [
   {

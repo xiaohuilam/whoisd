@@ -36,7 +36,8 @@
         "hide": true,
         "related": "ownerHandle",
         "relatedBy": "handle",
-        "relatedTo": "customer"
+        "relatedTo": "customer",
+        "replacedBy": "04"
       },
       "06": {
         "key": "phone: ",
@@ -44,7 +45,8 @@
         "hide": true,
         "related": "ownerHandle",
         "relatedBy": "handle",
-        "relatedTo": "customer"
+        "relatedTo": "customer",
+        "replacedBy": "04"
       },
       "07": {
         "key": "fax-no: ",
@@ -52,7 +54,8 @@
         "hide": true,
         "related": "ownerHandle",
         "relatedBy": "handle",
-        "relatedTo": "customer"
+        "relatedTo": "customer",
+        "replacedBy": "04"
       },
       "08": {
         "key": "registrar: ",
