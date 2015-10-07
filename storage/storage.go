@@ -110,11 +110,12 @@ func (storage *Record) request(query string) (*mapper.Entry, error) {
 		if len(field.Value) != 0 && len(field.Related) == 0 &&
 			len(field.RelatedBy) == 0 && len(field.RelatedTo) == 0 {
 			entry.Fields[index] = mapper.Field{
-				Key:      field.Key,
-				Value:    field.Value,
-				Format:   field.Format,
-				Multiple: field.Multiple,
-				Hide:     field.Hide,
+				Key:        field.Key,
+				Value:      field.Value,
+				Format:     field.Format,
+				Multiple:   field.Multiple,
+				Hide:       field.Hide,
+				ReplacedBy: field.ReplacedBy,
 			}
 		}
 	}
@@ -144,11 +145,12 @@ func (storage *Record) request(query string) (*mapper.Entry, error) {
 			}
 
 			entry.Fields[index] = mapper.Field{
-				Key:      field.Key,
-				Value:    value,
-				Format:   field.Format,
-				Multiple: field.Multiple,
-				Hide:     field.Hide,
+				Key:        field.Key,
+				Value:      value,
+				Format:     field.Format,
+				Multiple:   field.Multiple,
+				Hide:       field.Hide,
+				ReplacedBy: field.ReplacedBy,
 			}
 		}
 	}
@@ -194,11 +196,12 @@ func (storage *Record) request(query string) (*mapper.Entry, error) {
 				}
 			}
 			entry.Fields[index] = mapper.Field{
-				Key:      field.Key,
-				Value:    value,
-				Format:   field.Format,
-				Multiple: field.Multiple,
-				Hide:     field.Hide,
+				Key:        field.Key,
+				Value:      value,
+				Format:     field.Format,
+				Multiple:   field.Multiple,
+				Hide:       field.Hide,
+				ReplacedBy: field.ReplacedBy,
 			}
 		}
 	}
@@ -224,7 +227,8 @@ func prepareAnswer(entry *mapper.Entry, keys []string) (answer string) {
 		}
 		if entry.Fields[index].Multiple {
 			for _, value := range entry.Fields[index].Value {
-				if entry.Fields[index].Hide && value == "" {
+				if entry.Fields[index].Hide && value == "" ||
+					entry.Fields[index].ReplacedBy != "" && isNotEmptyField(entry, entry.Fields[index].ReplacedBy) {
 					continue
 				}
 				if entry.Fields[index].Format != "" {
@@ -239,7 +243,8 @@ func prepareAnswer(entry *mapper.Entry, keys []string) (answer string) {
 			} else {
 				value = strings.Trim(strings.Join(entry.Fields[index].Value, " "), " ")
 			}
-			if entry.Fields[index].Hide && value == "" {
+			if entry.Fields[index].Hide && value == "" ||
+				entry.Fields[index].ReplacedBy != "" && isNotEmptyField(entry, entry.Fields[index].ReplacedBy) {
 				continue
 			}
 			answer = strings.Join([]string{answer, key, value, "\n"}, "")
@@ -247,6 +252,15 @@ func prepareAnswer(entry *mapper.Entry, keys []string) (answer string) {
 	}
 
 	return answer
+}
+
+func isNotEmptyField(entry *mapper.Entry, index string) bool {
+	for _, value := range entry.Fields[index].Value {
+		if value != "" {
+			return true
+		}
+	}
+	return false
 }
 
 // decodes IDN names to Unicode and adds it to value
