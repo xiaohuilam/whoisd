@@ -39,6 +39,12 @@ type Field struct {
 
 	// a name of the table/type in a database through which made a relation
 	RelatedTo string `json: "related_to"`
+
+	// it contains the number of field that replaces this field.
+	// If the field is referenced by "replacedBy" has non-empty value,
+	// then this field will not show in whois output, because this field
+	// should be replaced by the field specified in 'ReplacedBy'
+	ReplacedBy string `json: "replaced_by"`
 }
 
 func (bundle Bundle) EntryByTLD(TLD string) *Entry {
