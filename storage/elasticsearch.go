@@ -131,15 +131,11 @@ func transformData(record map[string]interface{}) map[string][]string {
 			for key, val := range arrayFields {
 				var item []string
 				if array, ok := val.([]interface{}); ok {
-					for _, str := range array {
-						if str != nil {
-							item = append(item, str.(string))
-						}
+					for _, v := range array {
+						item = append(item, toString(v)...)
 					}
 				} else {
-					if val != nil {
-						item = []string{val.(string)}
-					}
+					item = toString(val)
 				}
 				element[index+"."+key] = item
 			}
@@ -147,13 +143,23 @@ func transformData(record map[string]interface{}) map[string][]string {
 		} else {
 
 			// Simple field used as <name> and converted to []string
-			var item []string
-			if str, ok := value.(string); ok {
-				item = []string{str}
-			}
-			element[index] = item
+			element[index] = toString(value)
 		}
 	}
 
 	return element
+}
+
+func toString(value interface{}) []string {
+	var item []string
+	if value != nil {
+		if v, ok := value.(string); ok {
+			item = []string{v}
+		}
+		if v, ok := value.(float64); ok {
+			item = []string{strconv.FormatFloat(v, 'f', -1, 64)}
+		}
+	}
+
+	return item
 }
