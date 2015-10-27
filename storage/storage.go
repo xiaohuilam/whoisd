@@ -2,6 +2,7 @@ package storage
 
 import (
 	"log"
+	"os"
 	"sort"
 	"strings"
 	"time"
@@ -23,6 +24,12 @@ type Record struct {
 	dataStore Storage
 	mapper.Bundle
 }
+
+// simplest logger, which initialized during starts of the application
+var (
+	stdlog = log.New(os.Stdout, "[STORAGE]: ", log.Ldate|log.Ltime)
+	errlog = log.New(os.Stderr, "[STORAGE:ERROR]: ", log.Ldate|log.Ltime|log.Lshortfile)
+)
 
 // New - returns new Storage instance
 func New(conf *config.Record, bundle mapper.Bundle) *Record {
@@ -61,13 +68,13 @@ func New(conf *config.Record, bundle mapper.Bundle) *Record {
 func (storage *Record) Search(query string) (answer string, ok bool) {
 	ok = false
 	answer = "not found\n"
-	log.Println("query:", query)
+	stdlog.Println("query:", query)
 	if len(strings.TrimSpace(query)) == 0 {
-		log.Println("Empty query")
+		errlog.Println("Empty query")
 	} else {
 		entry, err := storage.request(strings.TrimSpace(query))
 		if err != nil {
-			log.Println("Query:", query, err.Error())
+			errlog.Println("Query:", query, err.Error())
 		} else {
 			if entry == nil || len(entry.Fields) == 0 {
 				return answer, ok

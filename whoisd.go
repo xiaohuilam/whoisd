@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"runtime"
 	"time"
@@ -11,9 +12,15 @@ import (
 	"github.com/takama/whoisd/service"
 )
 
+var (
+	stdlog, errlog *log.Logger
+)
+
 // Init "Usage" helper
 func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+	stdlog = log.New(os.Stdout, "[SETUP]: ", log.Ldate|log.Ltime)
+	errlog = log.New(os.Stderr, "[SETUP:ERROR]: ", log.Ldate|log.Ltime|log.Lshortfile)
 	flag.Usage = func() {
 		fmt.Println(config.Usage())
 	}
@@ -23,7 +30,7 @@ func main() {
 	daemonName, daemonDescription := "whoisd", "Whois Daemon"
 	daemon, err := service.New(daemonName, daemonDescription)
 	if err != nil {
-		fmt.Println("Error: ", err)
+		errlog.Println("Error: ", err)
 		os.Exit(1)
 	}
 	flag.Parse()
@@ -37,10 +44,8 @@ func main() {
 	}
 	status, err := daemon.Run()
 	if err != nil {
-		fmt.Println(status, "\nError: ", err)
+		errlog.Printf("%s - %s", status, err)
 		os.Exit(1)
 	}
-	// Wait for logger output
-	time.Sleep(100 * time.Millisecond)
 	fmt.Println(status)
 }

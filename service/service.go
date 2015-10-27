@@ -17,8 +17,14 @@ import (
 // Version of the Whois Daemon
 // Date of current version release
 const (
-	Version = "0.2.4"
-	Date    = "2015-10-07T23:50:17Z"
+	Version = "0.2.5"
+	Date    = "2015-10-27T14:55:17Z"
+)
+
+// simplest logger, which initialized during starts of the application
+var (
+	stdlog = log.New(os.Stdout, "[SERVICE]: ", log.Ldate|log.Ltime)
+	errlog = log.New(os.Stderr, "[SERVICE:ERROR]: ", log.Ldate|log.Ltime|log.Lshortfile)
 )
 
 // Record - standard record (struct) for service package
@@ -66,8 +72,8 @@ func (service *Record) Run() (string, error) {
 
 	// Logs for what is host&port used
 	serviceHostPort := fmt.Sprintf("%s:%d", service.Config.Host, service.Config.Port)
-	log.Printf("%s started on %s\n", service.Name, serviceHostPort)
-	log.Printf("Used storage %s on %s:%d\n",
+	stdlog.Printf("%s started on %s\n", service.Name, serviceHostPort)
+	stdlog.Printf("Used storage %s on %s:%d\n",
 		service.Config.Storage.StorageType,
 		service.Config.Storage.Host,
 		service.Config.Storage.Port,
@@ -107,7 +113,7 @@ func (service *Record) Run() (string, error) {
 		// just read answer from channel pipe
 		buffer := make([]byte, 4096)
 		numBytes, err := connOut.Read(buffer)
-		log.Println("Read bytes:", numBytes)
+		stdlog.Println("Read bytes:", numBytes)
 		return string(buffer), err
 	}
 
@@ -129,8 +135,8 @@ func (service *Record) Run() (string, error) {
 			newClient := client.Record{Conn: conn}
 			go newClient.HandleClient(channel)
 		case killSignal := <-interrupt:
-			log.Println("Got signal:", killSignal)
-			log.Println("Stoping listening on ", listener.Addr())
+			stdlog.Println("Got signal:", killSignal)
+			stdlog.Println("Stoping listening on ", listener.Addr())
 			listener.Close()
 			if killSignal == os.Interrupt {
 				return "Daemon was interruped by system signal", nil
@@ -147,7 +153,7 @@ func (service *Record) Run() (string, error) {
 func acceptConnection(listener net.Listener, listen chan<- net.Conn) {
 	defer func() {
 		if recovery := recover(); recovery != nil {
-			log.Println("Recovered in ListenConnection:", recovery)
+			errlog.Println("Recovered in ListenConnection:", recovery)
 		}
 	}()
 	for {
