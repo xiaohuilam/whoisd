@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"log"
 	"net"
+	"os"
 
 	"github.com/takama/whoisd/storage"
 	"golang.org/x/net/idna"
@@ -19,11 +20,17 @@ type Record struct {
 	Query []byte
 }
 
+// simplest logger, which initialized during starts of the application
+var (
+	stdlog = log.New(os.Stdout, "[CLIENT]: ", log.Ldate|log.Ltime)
+	errlog = log.New(os.Stderr, "[CLIENT:ERROR]: ", log.Ldate|log.Ltime|log.Lshortfile)
+)
+
 // HandleClient - Sends a client data into the channel
 func (client *Record) HandleClient(channel chan<- Record) {
 	defer func() {
 		if recovery := recover(); recovery != nil {
-			log.Println("Recovered in HandleClient:", recovery)
+			errlog.Println("Recovered in HandleClient:", recovery)
 			channel <- *client
 		}
 	}()
@@ -41,7 +48,7 @@ func ProcessClient(channel <-chan Record, repository *storage.Record) {
 	message := Record{}
 	defer func() {
 		if recovery := recover(); recovery != nil {
-			log.Println("Recovered in ProcessClient:", recovery)
+			errlog.Println("Recovered in ProcessClient:", recovery)
 			if message.Conn != nil {
 				message.Conn.Close()
 			}
@@ -55,7 +62,7 @@ func ProcessClient(channel <-chan Record, repository *storage.Record) {
 		}
 		data, ok := repository.Search(query)
 		message.Conn.Write([]byte(data))
-		log.Println(message.Conn.RemoteAddr().String(), query, ok)
+		stdlog.Println(message.Conn.RemoteAddr().String(), query, ok)
 		message.Conn.Close()
 	}
 }
