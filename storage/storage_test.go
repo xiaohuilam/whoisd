@@ -4,8 +4,8 @@ import (
 	"flag"
 	"testing"
 
-	"github.com/takama/whoisd/config"
-	"github.com/takama/whoisd/mapper"
+	"github.com/openprovider/whoisd/config"
+	"github.com/openprovider/whoisd/mapper"
 )
 
 func TestStorage(t *testing.T) {
