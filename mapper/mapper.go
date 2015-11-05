@@ -11,6 +11,9 @@ type Entry struct {
 	// TLDs - list of TLDs, which accepted by specified Entry
 	TLDs []string `json: "TLDs"`
 
+	// Default - use this entry as default for all undefined TLDs
+	Default bool `json: "default"`
+
 	// a list of fields from "01" to last number "nn" in ascending order
 	Fields map[string]Field `json: "fields"`
 }
@@ -52,13 +55,19 @@ type Field struct {
 }
 
 func (bundle Bundle) EntryByTLD(TLD string) *Entry {
+	var defaultIndex int
 	for index := range bundle {
 		for _, item := range bundle[index].TLDs {
 			if item == TLD {
 				return &bundle[index]
 			}
+			if bundle[index].Default {
+				defaultIndex = index
+			}
 		}
 	}
-
+	if defaultIndex != 0 {
+		return &bundle[defaultIndex]
+	}
 	return nil
 }

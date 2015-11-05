@@ -11,7 +11,7 @@ import (
 	"flag"
 	"os"
 
-	"github.com/takama/whoisd/mapper"
+	"github.com/openprovider/whoisd/mapper"
 )
 
 // Default values: path to config file, host, port, etc

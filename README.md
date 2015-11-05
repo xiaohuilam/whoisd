@@ -14,7 +14,7 @@ Whois Daemon complies with the requirements of [ICANN](https://www.icann.org/res
 This package is "go-gettable", just do:
 
 ```sh
-go get github.com/takama/whoisd
+go get github.com/openprovider/whoisd
 ```
 
 ### Testing
@@ -348,7 +348,6 @@ Name Server: ns3.example.com
 All the contributors are welcome. If you would like to be the contributor please accept some rules.
 - The pull requests will be accepted only in "develop" branch
 - All modifications or additions should be tested
-- Sorry, I'll not accept code with any dependency, only standard library
 
 Thank you for your understanding!
 
