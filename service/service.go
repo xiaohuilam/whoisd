@@ -21,8 +21,8 @@ import (
 // Version of the Whois Daemon
 // Date of current version release
 const (
-	Version = "0.3.0"
-	Date    = "2015-11-05T12:35:17Z"
+	Version = "0.3.1"
+	Date    = "2015-11-05T12:42:17Z"
 )
 
 // simplest logger, which initialized during starts of the application
