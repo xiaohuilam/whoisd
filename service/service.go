@@ -1,3 +1,7 @@
+// Copyright 2015 Openprovider Authors. All rights reserved.
+// Use of this source code is governed by a license
+// that can be found in the LICENSE file.
+
 package service
 
 import (
@@ -17,8 +21,8 @@ import (
 // Version of the Whois Daemon
 // Date of current version release
 const (
-	Version = "0.2.5"
-	Date    = "2015-10-27T14:55:17Z"
+	Version = "0.3.0"
+	Date    = "2015-11-05T12:35:17Z"
 )
 
 // simplest logger, which initialized during starts of the application
