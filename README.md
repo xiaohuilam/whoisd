@@ -5,7 +5,7 @@
 
 Whois Daemon complies with the requirements of [ICANN](https://www.icann.org/resources/pages/approved-with-specs-2013-09-17-en)
 
-[![Build Status](https://travis-ci.org/takama/whoisd.png?branch=master)](https://travis-ci.org/takama/whoisd)
+[![Build Status](https://travis-ci.org/openprovider/whoisd.svg?branch=master)](https://travis-ci.org/takama/whoisd)
 
 **Whois Daemon** represents a light server which provide fast way to produce whois information. The daemon based on Elasticsearch storage (Mysql storage still in development). 
 
