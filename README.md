@@ -354,4 +354,4 @@ Thank you for your understanding!
 
 ## License
 
-[MIT License](https://github.com/openprovider/spawn/blob/master/LICENSE)
+[MIT License](https://github.com/openprovider/whoisd/blob/master/LICENSE)
