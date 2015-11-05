@@ -333,13 +333,25 @@ Name Server: ns3.example.com
 - a example of formating where used undefined tag "{date}", because a name of the field has not present, "{date}" will be replaced by CURRENT date in RFC3339 format
 
 
-### TODO
+## Todo
 
 - in memory storage
 - Rest API
 - update storage records by Rest API
 
+## Authors
 
-Copyright (c) 2015 Igor Dolzhikov
+[Igor Dolzhikov](https://github.com/takama)
 
-[MIT License](https://github.com/takama/whoisd/blob/master/LICENSE)
+## Contributors
+
+All the contributors are welcome. If you would like to be the contributor please accept some rules.
+- The pull requests will be accepted only in "develop" branch
+- All modifications or additions should be tested
+- Sorry, I'll not accept code with any dependency, only standard library
+
+Thank you for your understanding!
+
+## License
+
+[MIT License](https://github.com/openprovider/spawn/blob/master/LICENSE)
