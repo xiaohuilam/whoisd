@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/takama/whoisd/config"
-	"github.com/takama/whoisd/mapper"
+	"github.com/openprovider/whoisd/config"
+	"github.com/openprovider/whoisd/mapper"
 	"golang.org/x/net/idna"
 )
 

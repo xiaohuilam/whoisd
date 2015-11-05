@@ -12,10 +12,10 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/openprovider/whoisd/client"
+	"github.com/openprovider/whoisd/config"
+	"github.com/openprovider/whoisd/storage"
 	"github.com/takama/daemon"
-	"github.com/takama/whoisd/client"
-	"github.com/takama/whoisd/config"
-	"github.com/takama/whoisd/storage"
 )
 
 // Version of the Whois Daemon
