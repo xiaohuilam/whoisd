@@ -1,5 +1,6 @@
 
-# Whois Daemon
+Openprovider Whois Daemon
+=========================
 
 *A quick and easy way to setup your own WHOIS server with Elasticsearch/MySQL storage*
 
