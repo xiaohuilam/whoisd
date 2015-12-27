@@ -7,7 +7,6 @@ package storage
 import (
 	"fmt"
 	"strconv"
-	"errors"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 )
