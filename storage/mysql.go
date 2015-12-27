@@ -37,19 +37,42 @@ func (mysql *MysqlRecord) Search(name string, query string) (map[string][]string
 }
 
 // SearchRelated - search data in the storage from related type or table
-// TODO - Mysql storage is not released
 func (mysql *MysqlRecord) SearchRelated(
 	typeTable string, name string, query string) (map[string][]string, error) {
 
-	return nil, errors.New("Mysql driver not released")
+	result, err := mysql.searchRaw(typeTable, name, query)
+	if err != nil {
+		return nil, err
+	}
+	if len(result) > 0 {
+		return result[0], nil
+	}
+
+	data := make(map[string][]string)
+	return data, nil
 }
 
 // SearchMultiple - search multiple records of data in the storage
-// TODO - Mysql storage is not released
 func (mysql *MysqlRecord) SearchMultiple(
 	typeTable string, name string, query string) (map[string][]string, error) {
 
-	return nil, errors.New("Mysql driver not released")
+	result, err := mysql.searchRaw(typeTable, name, query)
+	if err != nil {
+		return nil, err
+	}
+
+	data := make(map[string][]string)
+
+	if len(result) > 0 {
+		for _, item := range result {
+			for key, value := range item {
+				data[key] = append(data[key], value...)
+			}
+		}
+		return data, nil
+	}
+
+	return data, nil
 }
 
 func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string) ([]map[string][]string, error) {
