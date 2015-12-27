@@ -146,7 +146,7 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 // Based on http://rosettacode.org/wiki/Strip_a_set_of_characters_from_a_string#Go
 func filterString(str, chr string) string {
 	return strings.Map(func(r rune) rune {
-		if strings.IndexRune(chr, r) > 0 {
+		if strings.IndexRune(chr, r) >= 0 {
 			return r
 		}
 		return -1
