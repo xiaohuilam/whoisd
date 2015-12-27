@@ -83,10 +83,12 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 	if err != nil {
 		return nil, fmt.Errorf("Mysql connection error: %v", err)
 	}
-	defer db.Close()
 
+	// Filter input
+	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_")
+	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-")
 	// Execute the query
-	rows, err := db.Query("SELECT * FROM " + typeTable + " where " + name + "=?", query) // TODO: prevent sqli
+	rows, err := db.Query("SELECT * FROM " + typeTable + " where " + name + "=?", query)
 	if err != nil {
 		return nil, fmt.Errorf("Mysql query error: %v", err)
 	}
@@ -138,4 +140,13 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 	}
 
 	return data, nil
+}
+
+func filterString(str, chr string) string {
+	return strings.Map(func(r rune) rune {
+		if strings.IndexRune(chr, r) > 0 {
+			return r
+		}
+		return -1
+	}, str)
 }
