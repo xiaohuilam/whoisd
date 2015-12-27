@@ -6,6 +6,7 @@ package storage
 
 import (
 	"fmt"
+	"strings"
 	"strconv"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
@@ -142,6 +143,7 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 	return data, nil
 }
 
+// Based on http://rosettacode.org/wiki/Strip_a_set_of_characters_from_a_string#Go
 func filterString(str, chr string) string {
 	return strings.Map(func(r rune) rune {
 		if strings.IndexRune(chr, r) > 0 {
