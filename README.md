@@ -15,7 +15,7 @@ Whois Daemon complies with the requirements of [ICANN](https://www.icann.org/res
 This package is "go-gettable", just do:
 
 ```sh
-go get github.com/openprovider/whoisd
+go get github.com/pecharmin/whoisd
 ```
 
 ### Testing
@@ -354,4 +354,4 @@ Thank you for your understanding!
 
 ## License
 
-[MIT License](https://github.com/openprovider/whoisd/blob/master/LICENSE)
+[MIT License](https://github.com/pecharmin/whoisd/blob/master/LICENSE)
