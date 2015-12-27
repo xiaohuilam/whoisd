@@ -71,8 +71,8 @@ func New() *Record {
 	flag.StringVar(&config.Storage.StorageType, "storage", defaultStorageType, "type of storage (Elasticsearch, Mysql)")
 	flag.StringVar(&config.Storage.Host, "shost", defaultStorageHost, "storage host name or IP address")
 	flag.IntVar(&config.Storage.Port, "sport", defaultStoragePort, "storage port number")
-	flag.StringVar(&config.Storage.Username, "susername", defaultStoragePort, "username for storage login")
-	flag.StingVar(&config.Storage.Password, "spassword", defaultStoragePort, "password of storage user")
+	flag.StringVar(&config.Storage.Username, "susername", defaultStorageUsername, "username for storage login")
+	flag.StringVar(&config.Storage.Password, "spassword", defaultStoragePassword, "password of storage user")
 	flag.StringVar(&config.Storage.IndexBase, "base", defaultIndexBase, "storage index or database name")
 	flag.StringVar(&config.Storage.TypeTable, "table", defaultTypeTable, "storage type or table name")
 
