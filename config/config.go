@@ -25,7 +25,7 @@ const (
 	defaultStorageType     = "Dummy"
 	defaultStorageHost     = "localhost"
 	defaultStoragePort     = 9200
-	defaultStorageUsername = "test"
+	defaultStorageUser     = "test"
 	defaultStoragePassword = "test"
 	defaultIndexBase       = "whois"
 	defaultTypeTable       = "domain"
@@ -48,7 +48,7 @@ type Record struct {
 		StorageType string
 		Host        string
 		Port        int
-		Username    string
+		User        string
 		Password    string
 		IndexBase   string
 		TypeTable   string
@@ -71,7 +71,7 @@ func New() *Record {
 	flag.StringVar(&config.Storage.StorageType, "storage", defaultStorageType, "type of storage (Elasticsearch, Mysql)")
 	flag.StringVar(&config.Storage.Host, "shost", defaultStorageHost, "storage host name or IP address")
 	flag.IntVar(&config.Storage.Port, "sport", defaultStoragePort, "storage port number")
-	flag.StringVar(&config.Storage.Username, "susername", defaultStorageUsername, "username for storage login")
+	flag.StringVar(&config.Storage.User, "suser", defaultStorageUser, "user name for storage login")
 	flag.StringVar(&config.Storage.Password, "spassword", defaultStoragePassword, "password of storage user")
 	flag.StringVar(&config.Storage.IndexBase, "base", defaultIndexBase, "storage index or database name")
 	flag.StringVar(&config.Storage.TypeTable, "table", defaultTypeTable, "storage type or table name")
@@ -106,7 +106,7 @@ func (config *Record) Load() (mapper.Bundle, error) {
 	flags.StringVar(&config.Storage.StorageType, "storage", config.Storage.StorageType, "")
 	flags.StringVar(&config.Storage.Host, "shost", config.Storage.Host, "")
 	flags.IntVar(&config.Storage.Port, "sport", config.Storage.Port, "")
-	flags.StringVar(&config.Storage.Username, "susername", config.Storage.Username, "")
+	flags.StringVar(&config.Storage.User, "suser", config.Storage.User, "")
 	flags.StringVar(&config.Storage.Password, "spassword", config.Storage.Password, "")
 	flags.StringVar(&config.Storage.IndexBase, "base", config.Storage.IndexBase, "")
 	flags.StringVar(&config.Storage.TypeTable, "table", config.Storage.TypeTable, "")
