@@ -5,7 +5,7 @@ import (
 )
 
 func TestMysqlSearchEmpty(t *testing.T) {
-	dummy := MysqlRecord{"localhost", 3760, "whois", "domain"}
+	dummy := MysqlRecord{"localhost", 3760, "whois", "domain", "test", "test"}
 	var emptyResult map[string][]string
 	var err error
 	emptyResult, err = dummy.Search("name", "")

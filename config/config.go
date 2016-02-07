@@ -16,19 +16,19 @@ import (
 
 // Default values: path to config file, host, port, etc
 const (
-	defaultConfigPath  = "/etc/whoisd/whoisd.conf"
-	defaultMappingPath = "/etc/whoisd/conf.d/mapping.json"
-	defaultHost        = "0.0.0.0"
-	defaultPort        = 43
-	defaultWorkers     = 1000
-	defaultConnections = 1000
-	defaultStorageType = "Dummy"
-	defaultStorageHost = "localhost"
-	defaultStoragePort = 9200
-	defaultStorageUsername = "root"
-	defaultStoragePassword = "root"
-	defaultIndexBase   = "whois"
-	defaultTypeTable   = "domain"
+	defaultConfigPath      = "/etc/whoisd/whoisd.conf"
+	defaultMappingPath     = "/etc/whoisd/conf.d/mapping.json"
+	defaultHost            = "0.0.0.0"
+	defaultPort            = 43
+	defaultWorkers         = 1000
+	defaultConnections     = 1000
+	defaultStorageType     = "Dummy"
+	defaultStorageHost     = "localhost"
+	defaultStoragePort     = 9200
+	defaultStorageUsername = "test"
+	defaultStoragePassword = "test"
+	defaultIndexBase       = "whois"
+	defaultTypeTable       = "domain"
 )
 
 // Record - standard record (struct) for config package
