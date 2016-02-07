@@ -74,7 +74,7 @@ Options:
   -storage=<type>   Type of storage (Elasticsearch, Mysql or Dummy for testing)
   -shost=<host/IP>  Storage host name or IP address
   -sport=<port>     Storage port number
-  -susername=<user> Username for storage login
+  -suser=<name>     User name for storage login
   -spassword=<secr> Password of storage user
   -base=<name>      Storage index or database name
   -table=<name>     Storage type or table name
@@ -94,7 +94,7 @@ The config file should be in /etc/whoisd/whoisd.conf. Of course possible to load
     "storageType": "Dummy",
     "host": "localhost",
     "port": 9200,
-    "username": "test",
+    "user": "test",
     "password": "test",
     "indexBase": "whois",
     "typeTable": "domain"
