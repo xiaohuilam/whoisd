@@ -34,7 +34,7 @@ Options:
   -storage=<type>   Type of storage (Elasticsearch, Mysql or Dummy for testing)
   -shost=<host/IP>  Storage host name or IP address
   -sport=<port>     Storage port number
-  -susername=<user> Username for storage login
+  -suser=<name>     User name for storage login
   -spassword=<secr> Password of storage user
   -base=<name>      Storage index or database name
   -table=<name>     Storage type or table name

@@ -17,7 +17,7 @@ import (
 type MysqlRecord struct {
 	Host     string
 	Port     int
-	Username string
+	User     string
 	Password string
 	DataBase string
 	Table    string
@@ -78,7 +78,7 @@ func (mysql *MysqlRecord) SearchMultiple(
 
 func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string) ([]map[string][]string, error) {
 	// Thanks to https://github.com/go-sql-driver/mysql/wiki/Examples#rawbytes
-	db, err := sql.Open("mysql", mysql.Username+":"+mysql.Password+
+	db, err := sql.Open("mysql", mysql.User+":"+mysql.Password+
 		"@tcp("+mysql.Host+":"+strconv.Itoa(mysql.Port)+")/"+
 		mysql.DataBase+"?charset=utf8")
 
