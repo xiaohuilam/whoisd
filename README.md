@@ -1,5 +1,6 @@
 
-# Whois Daemon
+Openprovider Whois Daemon
+=========================
 
 *A quick and easy way to setup your own WHOIS server with Elasticsearch/MySQL storage*
 
@@ -15,6 +16,9 @@ This package is "go-gettable", just do:
 
 ```sh
 go get github.com/openprovider/whoisd
+
+# For MySQL support also run:
+go get github.com/go-sql-driver/mysql
 ```
 
 ### Testing
@@ -342,6 +346,7 @@ Name Server: ns3.example.com
 ## Authors
 
 [Igor Dolzhikov](https://github.com/takama)
+[Armin Pech](https://github.com/pecharmin)
 
 ## Contributors
 
