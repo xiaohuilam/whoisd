@@ -5,10 +5,11 @@
 package storage
 
 import (
-	"fmt"
-	"strings"
-	"strconv"
 	"database/sql"
+	"fmt"
+	"strconv"
+	"strings"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -77,9 +78,9 @@ func (mysql *MysqlRecord) SearchMultiple(
 
 func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string) ([]map[string][]string, error) {
 	// Thanks to https://github.com/go-sql-driver/mysql/wiki/Examples#rawbytes
-	db, err := sql.Open("mysql",	mysql.Username + ":" + mysql.Password +
-					"@tcp(" + mysql.Host + ":" + strconv.Itoa(mysql.Port) + ")/" +
-					mysql.DataBase + "?charset=utf8")
+	db, err := sql.Open("mysql", mysql.Username+":"+mysql.Password+
+		"@tcp("+mysql.Host+":"+strconv.Itoa(mysql.Port)+")/"+
+		mysql.DataBase+"?charset=utf8")
 
 	if err != nil {
 		return nil, fmt.Errorf("Mysql connection error: %v", err)
@@ -89,7 +90,7 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_")
 	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-")
 	// Execute the query
-	rows, err := db.Query("SELECT * FROM " + typeTable + " where " + name + "=?", query)
+	rows, err := db.Query("SELECT * FROM "+typeTable+" where "+name+"=?", query)
 	if err != nil {
 		return nil, fmt.Errorf("Mysql query error: %v", err)
 	}
