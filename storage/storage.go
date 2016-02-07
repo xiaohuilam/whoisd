@@ -43,6 +43,8 @@ func New(conf *config.Record, bundle mapper.Bundle) *Record {
 			&MysqlRecord{
 				conf.Storage.Host,
 				conf.Storage.Port,
+				conf.Storage.Username,
+				conf.Storage.Password,
 				conf.Storage.IndexBase,
 				conf.Storage.TypeTable,
 			},
