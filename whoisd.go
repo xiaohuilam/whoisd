@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/pecharmin/whoisd/config"
-	"github.com/pecharmin/whoisd/service"
+	"github.com/openprovider/whoisd/config"
+	"github.com/openprovider/whoisd/service"
 )
 
 var (

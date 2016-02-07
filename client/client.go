@@ -10,7 +10,7 @@ import (
 	"net"
 	"os"
 
-	"github.com/pecharmin/whoisd/storage"
+	"github.com/openprovider/whoisd/storage"
 	"golang.org/x/net/idna"
 )
 

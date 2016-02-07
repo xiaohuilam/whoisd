@@ -4,8 +4,8 @@ import (
 	"flag"
 	"testing"
 
-	"github.com/pecharmin/whoisd/config"
-	"github.com/pecharmin/whoisd/mapper"
+	"github.com/openprovider/whoisd/config"
+	"github.com/openprovider/whoisd/mapper"
 )
 
 func TestStorage(t *testing.T) {
