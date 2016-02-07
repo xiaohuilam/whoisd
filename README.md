@@ -8,7 +8,7 @@ Whois Daemon complies with the requirements of [ICANN](https://www.icann.org/res
 
 [![Build Status](https://travis-ci.org/openprovider/whoisd.svg?branch=master)](https://travis-ci.org/openprovider/whoisd)
 
-**Whois Daemon** represents a light server which provide fast way to produce whois information. The daemon based on Elasticsearch storage (Mysql storage still in development). 
+**Whois Daemon** represents a light server which provide fast way to produce whois information. The daemon based on Elasticsearch/Mysql storage. 
 
 ### Install
 
@@ -74,6 +74,8 @@ Options:
   -storage=<type>   Type of storage (Elasticsearch, Mysql or Dummy for testing)
   -shost=<host/IP>  Storage host name or IP address
   -sport=<port>     Storage port number
+  -susername=<user> Username for storage login
+  -spassword=<secr> Password of storage user
   -base=<name>      Storage index or database name
   -table=<name>     Storage type or table name
 ```
@@ -92,6 +94,8 @@ The config file should be in /etc/whoisd/whoisd.conf. Of course possible to load
     "storageType": "Dummy",
     "host": "localhost",
     "port": 9200,
+    "username": "test",
+    "password": "test",
     "indexBase": "whois",
     "typeTable": "domain"
   }
@@ -346,6 +350,7 @@ Name Server: ns3.example.com
 ## Authors
 
 [Igor Dolzhikov](https://github.com/takama)
+
 [Armin Pech](https://github.com/pecharmin)
 
 ## Contributors
