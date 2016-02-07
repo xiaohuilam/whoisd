@@ -16,6 +16,9 @@ This package is "go-gettable", just do:
 
 ```sh
 go get github.com/openprovider/whoisd
+
+# For MySQL support also run:
+go get github.com/go-sql-driver/mysql
 ```
 
 ### Testing
