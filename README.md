@@ -349,8 +349,8 @@ Name Server: ns3.example.com
 
 ## Authors
 
-[Igor Dolzhikov](https://github.com/takama)
-[Armin Pech](https://github.com/pecharmin)
+ [Igor Dolzhikov](https://github.com/takama)
+ [Armin Pech](https://github.com/pecharmin)
 
 ## Contributors
 
