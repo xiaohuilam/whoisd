@@ -86,6 +86,8 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 		return nil, fmt.Errorf("Mysql connection error: %v", err)
 	}
 
+	defer db.Close()
+
 	// Filter input
 	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_")
 	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-")
