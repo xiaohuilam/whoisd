@@ -89,8 +89,8 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 	defer db.Close()
 
 	// Filter input
-	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_")
-	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-")
+	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
+	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-")
 	// Execute the query
 	rows, err := db.Query("SELECT * FROM "+typeTable+" where "+name+"=?", query)
 	if err != nil {
