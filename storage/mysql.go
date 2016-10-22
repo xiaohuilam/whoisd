@@ -1,4 +1,4 @@
-// Copyright 2015 Openprovider Authors. All rights reserved.
+// Copyright 2016 Openprovider Authors. All rights reserved.
 // Use of this source code is governed by a license
 // that can be found in the LICENSE file.
 
@@ -86,9 +86,11 @@ func (mysql *MysqlRecord) searchRaw(typeTable string, name string, query string)
 		return nil, fmt.Errorf("Mysql connection error: %v", err)
 	}
 
+	defer db.Close()
+
 	// Filter input
-	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_")
-	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-")
+	name = filterString(name, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
+	query = filterString(query, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-")
 	// Execute the query
 	rows, err := db.Query("SELECT * FROM "+typeTable+" where "+name+"=?", query)
 	if err != nil {
