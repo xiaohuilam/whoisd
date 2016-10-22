@@ -347,12 +347,12 @@ Name Server: ns3.example.com
 - Rest API
 - update storage records by Rest API
 
-## Authors
 
- [Igor Dolzhikov](https://github.com/takama)
- [Armin Pech](https://github.com/pecharmin)
+## Contributors (unsorted)
 
-## Contributors
+ - [Igor Dolzhikov](https://github.com/takama)
+ - [Armin Pech](https://github.com/pecharmin)
+ - [Rafael Fernández López](https://github.com/ereslibre)
 
 All the contributors are welcome. If you would like to be the contributor please accept some rules.
 - The pull requests will be accepted only in "develop" branch
