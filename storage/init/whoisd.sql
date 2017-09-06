@@ -52,7 +52,6 @@ CREATE TABLE `domains` (
 
 LOCK TABLES `domains` WRITE;
 /*!40000 ALTER TABLE `domains` DISABLE KEYS */;
-INSERT INTO `domains` VALUES ('example.com','','','','','2016-02-29 22:08:29','2016-03-13 20:12:20',257,8,'AwEAAduGeZTXLX2tgqUb+KO4Ffsd4UHFNLktX5plzou9kVTROlKuj56ZZwvk30TzpYJguUMGrhdTRwPRZ8Ey/Hv714/spXBai5rxCmi0WBalV/tyO/+tCxtiOA6PQPzmbo6PKTg5DQi47hUG1l1wfBgbmJe2xATaRY9IczrlhxKaofRfZK9UGCCmXTCRDp5mqkIZwChKpjOWTuCCiVCPcWJ6KT9pBPu92ctAfdIPr9dBO08ePYWbZnIto/3C04eEOOcUxDMKzsuhh6d8RUptM/ellHsoWsKs+1bYwdFyJLxRKPNE0t5e/RF7fBSR7cOnIivXsD76WbfAJH8lTHPPmRaoqMU=',0,0,'','ns1.example.com','127.0.0.1','ns2.example.com','127.0.0.1','',''),('example.net','','','','','2016-03-17 21:32:46','2016-03-17 22:20:18',257,8,'AwEAAcJDg0GgwSGOXXIoemEavJUGQVw9jgxLS1hBd2fSYoz8opyPANlI64V2VYvjIo7osCRdXwanZXRQECcWPpBTXXUyBJPO/lHgLES23YoR4kHbELrGEp5Pg57+83Ch07KShkKHPtq8d1KSE8XUDqud489jHolSb8S7IiWdQHq1Fe4AK6MojjNf/xpol6L9OqluEVgJd7wahybHGbQKCAKN6Izrr4aYGu8i/FsD8sr/h0uQ7Y573uZYn1l87R3Q6fHq3Vkxb8z+H8sv35AD2eXPuvaqXYA3B4sWPjPqdBgQGNPek1uzrfdX2uoh8IaF1YeqXR9/kKq8rwgaJNp+aAs56Mc=',0,0,'','ns1.example.com','','ns2.example.com','','',''),('example.org','','','','','2015-12-30 23:39:49','2015-12-30 23:39:49',0,0,'',0,0,'','ns1.example.com','','ns2.example.com','','','');
 /*!40000 ALTER TABLE `domains` ENABLE KEYS */;
 UNLOCK TABLES;
 
