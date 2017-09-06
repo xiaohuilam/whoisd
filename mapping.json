@@ -360,15 +360,30 @@
         "relatedTo": "nameserver"
       },
       "54": {
-        "key": "DNSSEC: ",
-        "name": ["dnssec"],
-        "related": "name"
+        "key": "",
+        "value": ["DNSSEC:"]
       },
       "55": {
+        "key": "Key 1: ",
+        "name": ["dnskey1_flags", "dnskey1_algo", "dnskey1_key"],
+        "related": "name",
+        "format": "flags:{string}, algorithm_id:{string}, key_data:{string}"
+      },
+      "56": {
+        "key": "Key 2: ",
+        "name": ["dnskey2_flags", "dnskey2_algo", "dnskey2_key"],
+        "related": "name",
+        "format": "flags:{string}, algorithm_id:{string}, key_data:{string}"
+      },
+      "57": {
+        "key": "",
+        "value": [""]
+      },
+      "58": {
         "key": "",
         "value": ["URL of the ICANN WHOIS Data Problem Reporting System:", "http://wdprs.internic.net/"]
       },
-      "56": {
+      "59": {
         "key": "",
         "value": ["1"],
         "name": ["updatedDate"],
@@ -377,7 +392,7 @@
         "relatedBy": "id",
         "relatedTo": "whois"
       },
-      "57": {
+      "60": {
         "key": "",
         "value": ["\n; The data in this registrar whois database is provided to you for\n; information purposes only, and may be used to assist you in obtaining\n; information about or related to domain name registration records.\n; We do not guarantee its accuracy.\n; By submitting a WHOIS query, you agree that you will use this data\n; only for lawful purposes and that, under no circumstances, you will\n; use this data to\n; a) allow, enable, or otherwise support the transmission by e-mail,\n;    telephone, or facsimile of mass, unsolicited, commercial advertising\n;    or solicitations to entities other than the data recipient's own\n;    existing customers; or\n; b) enable high volume, automated, electronic processes that send queries\n;    or data to the systems of any Registry Operator or ICANN-Accredited\n;    registrar, except as reasonably necessary to register domain names\n;    or modify existing registrations.\n; The compilation, repackaging, dissemination or other use of this data\n; is expressly prohibited without prior written consent.\n; These terms may be changed without prior notice. By submitting this\n; query, you agree to abide by this policy.\n\n"]
       }
