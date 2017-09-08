@@ -12,7 +12,7 @@ mysql -u root -p whois < whois.sql
 
 ### Configure your whoisd.conf
 
-# Change the host to whatever hostname mysql is running on, as well as the database name (if different) and password
+Change the host to whatever hostname mysql is running on, as well as the database name (if different) and password
 ```json
 {
   "host": "localhost",
