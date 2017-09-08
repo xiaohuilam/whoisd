@@ -17,8 +17,11 @@ This package is "go-gettable", just do:
 ```sh
 go get github.com/openprovider/whoisd
 
-# For MySQL support also run:
+## For MySQL support also run:
 go get github.com/go-sql-driver/mysql
+# And initialize the sql storage backend
+mysql -uroot -p -e 'create database whois charset utf8;'
+curl -s https://raw.githubusercontent.com/openprovider/whoisd/master/storage/init/whoisd.sql | mysql -uroot -p whois
 ```
 
 ### Testing
