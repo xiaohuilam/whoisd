@@ -16,7 +16,7 @@ Change the host to whatever hostname mysql is running on, as well as the databas
 ```json
 {
   "host": "localhost",
-  "port": 3600,
+  "port": 43,
   "workers": 1000,
   "connections": 1000,
   "testMode": true,
