@@ -42,6 +42,10 @@ sudo whoisd start
 
 This will bring up whoisd listening on port 43 for client communication.
 
+### Examples
+
+Examples of using Elasticsearch and MySQL backends in [examples/README.md](examples/README.md)
+
 ### Usage
 
 ```
