@@ -17,11 +17,8 @@ This package is "go-gettable", just do:
 ```sh
 go get github.com/openprovider/whoisd
 
-## For MySQL support also run:
+# For MySQL support also run:
 go get github.com/go-sql-driver/mysql
-# And initialize the sql storage backend
-mysql -uroot -p -e 'create database whois charset utf8;'
-curl -s https://raw.githubusercontent.com/openprovider/whoisd/master/storage/init/whoisd.sql | mysql -uroot -p whois
 ```
 
 ### Testing
@@ -44,6 +41,10 @@ sudo whoisd start
 ```
 
 This will bring up whoisd listening on port 43 for client communication.
+
+### Examples
+
+Examples of using Elasticsearch and MySQL backends in [examples/README.md](examples/README.md)
 
 ### Usage
 
