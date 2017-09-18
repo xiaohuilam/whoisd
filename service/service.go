@@ -1,4 +1,4 @@
-// Copyright 2016 Openprovider Authors. All rights reserved.
+// Copyright 2017 Openprovider Authors. All rights reserved.
 // Use of this source code is governed by a license
 // that can be found in the LICENSE file.
 
@@ -21,8 +21,8 @@ import (
 // Version of the Whois Daemon
 // Date of current version release
 const (
-	Version = "0.4.6"
-	Date    = "2017-09-18T18:18:18Z"
+	Version = "0.4.7"
+	Date    = "2017-09-18T20:26:18Z"
 )
 
 // simplest logger, which initialized during starts of the application
