@@ -357,6 +357,7 @@ Name Server: ns3.example.com
  - [Igor Dolzhikov](https://github.com/takama)
  - [Armin Pech](https://github.com/pecharmin)
  - [Rafael Fernández López](https://github.com/ereslibre)
+ - [Andrei Dumitriu](https://github.com/tespio)
 
 All the contributors are welcome. If you would like to be the contributor please accept some rules.
 - The pull requests will be accepted only in "develop" branch
