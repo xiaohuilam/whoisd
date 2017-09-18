@@ -7,6 +7,7 @@ Openprovider Whois Daemon
 Whois Daemon complies with the requirements of [ICANN](https://www.icann.org/resources/pages/approved-with-specs-2013-09-17-en)
 
 [![Build Status](https://travis-ci.org/openprovider/whoisd.svg?branch=master)](https://travis-ci.org/openprovider/whoisd)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/openprovider/whoisd/issues)
 
 **Whois Daemon** represents a light server which provide fast way to produce whois information.
 
@@ -357,6 +358,7 @@ Name Server: ns3.example.com
  - [Igor Dolzhikov](https://github.com/takama)
  - [Armin Pech](https://github.com/pecharmin)
  - [Rafael Fernández López](https://github.com/ereslibre)
+ - [Andrei Dumitriu](https://github.com/tespio)
 
 All the contributors are welcome. If you would like to be the contributor please accept some rules.
 - The pull requests will be accepted only in "develop" branch
