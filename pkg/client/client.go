@@ -10,7 +10,7 @@ import (
 	"net"
 	"os"
 
-	"github.com/openprovider/whoisd/storage"
+	"github.com/openprovider/whoisd/pkg/storage"
 	"golang.org/x/net/idna"
 )
 

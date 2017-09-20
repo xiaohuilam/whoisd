@@ -12,8 +12,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/openprovider/whoisd/config"
-	"github.com/openprovider/whoisd/service"
+	"github.com/openprovider/whoisd/pkg/config"
+	"github.com/openprovider/whoisd/pkg/service"
 )
 
 var (

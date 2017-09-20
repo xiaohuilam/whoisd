@@ -4,8 +4,8 @@ import (
 	"flag"
 	"testing"
 
-	"github.com/openprovider/whoisd/config"
-	"github.com/openprovider/whoisd/mapper"
+	"github.com/openprovider/whoisd/pkg/config"
+	"github.com/openprovider/whoisd/pkg/mapper"
 )
 
 func TestStorage(t *testing.T) {

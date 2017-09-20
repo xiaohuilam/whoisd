@@ -12,9 +12,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/openprovider/whoisd/client"
-	"github.com/openprovider/whoisd/config"
-	"github.com/openprovider/whoisd/storage"
+	"github.com/openprovider/whoisd/pkg/client"
+	"github.com/openprovider/whoisd/pkg/config"
+	"github.com/openprovider/whoisd/pkg/storage"
 	"github.com/takama/daemon"
 )
 
@@ -148,9 +148,6 @@ func (service *Record) Run() (string, error) {
 			return "Daemon was killed", nil
 		}
 	}
-
-	// never happen, but need to complete code
-	return "If you see that, you are lucky bastard", nil
 }
 
 // Accept a client connection and collect it in a channel
