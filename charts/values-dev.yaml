@@ -1,0 +1,76 @@
+## Default values for whoisd.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+## Count of instances
+##
+replicaCount: 2
+
+## Count of revisions saved in release history
+##
+revisionHistoryLimit: 1
+
+## Time of accepting requests to the service ( seconds )
+##
+minReadySeconds: 10
+
+## Value which provide max unavailable state ( percents )
+##
+maxUnavailable: 50%
+
+## Max count of surge replicas
+##
+maxSurge: 1
+
+## Termination grace period
+## It's value of period in seconds between SIGTERM and SIGKILL signals
+##
+gracePeriod: 30
+
+## Base namespace for working services
+##
+workflow: dev
+
+image:
+  ## Docker Registry/Hub image name and tag
+  ##
+  registry: docker.io/openprovider
+  name: whoisd
+  tag: 0.4.7
+
+  ## Docker Registry/Hub auth secret name, always use `registry-pull-secret` if registry inside if k8s
+  ##
+  # pullSecretName: registry-pull-secret
+
+  ## Docker Registry/Hub image pull policy
+  ##
+  pullPolicy: IfNotPresent
+
+service:
+  ## App container name
+  ##
+  name: whoisd
+  
+  ## Service Type
+  ## For minikube, set this to NodePort, elsewhere use ClusterIP
+  ##
+  type: NodePort
+
+  ## Port that exposed on every node
+  ##
+  nodePort: 30043
+
+  ## App service port
+  ##
+  port: 43
+
+## Resource requests and limits
+## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
+##
+resources:
+  limits:
+    cpu: 30m
+    memory: 48Mi
+  requests:
+    cpu: 30m
+    memory: 48Mi
