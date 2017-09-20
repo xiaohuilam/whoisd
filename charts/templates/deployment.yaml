@@ -38,6 +38,18 @@ spec:
         readinessProbe:
           tcpSocket:
             port: {{ .Values.service.port }}
+        volumeMounts:
+        - name: {{ template "name" . }}-config
+          mountPath: /etc/whoisd/
+        - name: {{ template "name" . }}-mapping
+          mountPath: /etc/whoisd/conf.d/
         resources:
 {{ toYaml .Values.resources | indent 12 }}
       terminationGracePeriodSeconds: {{ .Values.gracePeriod }}
+      volumes:
+        - name: {{ template "name" . }}-config
+          configMap:
+            name: {{ template "name" . }}-config
+        - name: {{ template "name" . }}-mapping
+          configMap:
+            name: {{ template "name" . }}-mapping
