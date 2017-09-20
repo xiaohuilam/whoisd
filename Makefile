@@ -44,7 +44,7 @@ vendor: clean bootstrap
 .PHONY: build
 build: vendor test
 	@echo "+ $@"
-	CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} go build -a -installsuffix cgo \
+	@CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} go build -a -installsuffix cgo \
 		-ldflags "-s -w -X ${PROJECT}/pkg/version.RELEASE=${RELEASE} -X ${PROJECT}/pkg/version.DATE=${RELEASE_DATE} -X ${PROJECT}/pkg/version.COMMIT=${COMMIT} -X ${PROJECT}/pkg/version.REPO=${REPO_INFO}" \
 		-o bin/${GOOS}-${GOARCH}/${APP} ${PROJECT}/cmd
 	docker build --pull -t $(CONTAINER_IMAGE):$(RELEASE) .
