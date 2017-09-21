@@ -1,4 +1,7 @@
 .DS_Store
 .idea/
 cache/
-whoisd
+bin
+vendor
+.coverprofile
+coverage.txt

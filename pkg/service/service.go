@@ -12,17 +12,10 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/openprovider/whoisd/client"
-	"github.com/openprovider/whoisd/config"
-	"github.com/openprovider/whoisd/storage"
+	"github.com/openprovider/whoisd/pkg/client"
+	"github.com/openprovider/whoisd/pkg/config"
+	"github.com/openprovider/whoisd/pkg/storage"
 	"github.com/takama/daemon"
-)
-
-// Version of the Whois Daemon
-// Date of current version release
-const (
-	Version = "0.4.7"
-	Date    = "2017-09-18T20:26:18Z"
 )
 
 // simplest logger, which initialized during starts of the application
@@ -148,9 +141,6 @@ func (service *Record) Run() (string, error) {
 			return "Daemon was killed", nil
 		}
 	}
-
-	// never happen, but need to complete code
-	return "If you see that, you are lucky bastard", nil
 }
 
 // Accept a client connection and collect it in a channel

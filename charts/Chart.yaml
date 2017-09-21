@@ -1,0 +1,10 @@
+name: whoisd
+description: A Helm charts for Whoisd service
+version: 0.4.7
+home: https://openprovider.com/
+sources:
+  - https://github.com/openprovider/whoisd
+maintainers:
+  - name: Igor Dolzhikov
+    email: idolzhikov@openprovider.com
+engine: gotpl

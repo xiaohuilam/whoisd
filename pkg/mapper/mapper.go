@@ -7,6 +7,7 @@ package mapper
 // Bundle - set of entries
 type Bundle []Entry
 
+// Entry contains whois data specified for TLDs list
 type Entry struct {
 	// TLDs - list of TLDs, which accepted by specified Entry
 	TLDs []string
@@ -54,6 +55,7 @@ type Field struct {
 	ReplacedBy string
 }
 
+// EntryByTLD returns whois data by TLD
 func (bundle Bundle) EntryByTLD(TLD string) *Entry {
 	var defaultIndex int
 	for index := range bundle {

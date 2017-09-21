@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 
+	// MySQL driver
 	_ "github.com/go-sql-driver/mysql"
 )
 
