@@ -83,7 +83,7 @@ service:
 
     ## Backend host name
     ##
-    host: elastic.openprovider.nl
+    host: elastic
 
     ## Backend port number
     ##
