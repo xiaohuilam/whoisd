@@ -40,7 +40,6 @@ func main() {
 	}
 	flag.Parse()
 	if daemon.Config.ShowVersion {
-		fmt.Println(version.DATE)
 		buildTime, err := time.Parse(time.RFC3339, version.DATE)
 		if err != nil {
 			buildTime = time.Now()
