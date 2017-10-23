@@ -12,8 +12,9 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/openprovider/whoisd/config"
-	"github.com/openprovider/whoisd/service"
+	"github.com/openprovider/whoisd/pkg/config"
+	"github.com/openprovider/whoisd/pkg/service"
+	"github.com/openprovider/whoisd/pkg/version"
 )
 
 var (
@@ -39,11 +40,11 @@ func main() {
 	}
 	flag.Parse()
 	if daemon.Config.ShowVersion {
-		buildTime, err := time.Parse(time.RFC3339, service.Date)
+		buildTime, err := time.Parse(time.RFC3339, version.DATE)
 		if err != nil {
 			buildTime = time.Now()
 		}
-		fmt.Println(daemonName, service.Version, buildTime.Format(time.RFC3339))
+		fmt.Println(daemonName, version.RELEASE, buildTime.Format(time.RFC1123))
 		os.Exit(0)
 	}
 	status, err := daemon.Run()

@@ -5,14 +5,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/openprovider/whoisd/config"
-	"github.com/openprovider/whoisd/storage"
+	"github.com/openprovider/whoisd/pkg/config"
+	"github.com/openprovider/whoisd/pkg/storage"
 )
 
 func TestClientHandling(t *testing.T) {
 	conf := config.New()
-	conf.ConfigPath = "../test/testconfig.conf"
-	conf.MappingPath = "../test/testmapping.json"
+	conf.ConfigPath = "../../test/testconfig.conf"
+	conf.MappingPath = "../../test/testmapping.json"
 	mapp, err := conf.Load()
 	if err != nil {
 		t.Error("Expected config loading without error, got", err.Error())

@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "name" . }}-config
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: "{{ .Values.service.name }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+data:
+  whoisd.conf: |-
+    {
+      "host": "0.0.0.0",
+      "port": {{ .Values.service.port }},
+      "workers": {{ .Values.service.workers }},
+      "connections": {{ .Values.service.connections }},
+      "storage": {
+        "storageType": "{{ .Values.service.storage.storageType }}",
+        "host": "{{ .Values.service.storage.host }}",
+        "port": {{ .Values.service.storage.port }},
+        "indexBase": "{{ .Values.service.storage.indexBase }}",
+        "typeTable": "{{ .Values.service.storage.typeTable }}"
+      }
+    }
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "name" . }}-mapping
+  labels:
+    app: {{ template "fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: "{{ .Values.service.name }}"
+    heritage: "{{ .Release.Service }}"
+    release: "{{ .Release.Name }}"
+data:
+{{ toYaml .Values.mapping | indent 2 }}

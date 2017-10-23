@@ -17,8 +17,8 @@ func TestService(t *testing.T) {
 	if daemon.Config.Host != "0.0.0.0" {
 		t.Error("Expected server host is 0.0.0.0, got", daemon.Config.Host)
 	}
-	daemon.Config.ConfigPath = "../test/testconfig.conf"
-	daemon.Config.MappingPath = "../test/testmapping.json"
+	daemon.Config.ConfigPath = "../../test/testconfig.conf"
+	daemon.Config.MappingPath = "../../test/testmapping.json"
 	answer, err := daemon.Run()
 	if err != nil {
 		t.Error("Expected service run without error, got", err.Error())

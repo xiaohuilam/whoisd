@@ -22,8 +22,8 @@ func TestConfig(t *testing.T) {
 	if len(bundle) != 0 {
 		t.Error("Expected empty bundle slice, got not empty bundle slice")
 	}
-	conf.ConfigPath = "../test/testconfig.conf"
-	conf.MappingPath = "../test/testmapping.json"
+	conf.ConfigPath = "../../test/testconfig.conf"
+	conf.MappingPath = "../../test/testmapping.json"
 	bundle, err = conf.Load()
 	if err != nil {
 		t.Error("Expected config loading without error, got", err.Error())
