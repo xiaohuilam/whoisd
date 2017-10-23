@@ -1,6 +1,4 @@
-
-Openprovider Whois Daemon
-=========================
+# Openprovider Whois Daemon
 
 *A quick and easy way to setup your own WHOIS server with Elasticsearch/MySQL storage*
 
@@ -11,31 +9,34 @@ Whois Daemon complies with the requirements of [ICANN](https://www.icann.org/res
 
 **Whois Daemon** represents a light server which provide fast way to produce whois information.
 
-### Install
-
-This package is "go-gettable", just do:
+## Testing
 
 ```sh
-go get github.com/openprovider/whoisd
-
-# For MySQL support also run:
-go get github.com/go-sql-driver/mysql
+make test
 ```
 
-### Testing
+Check of demo working state
 
 ```sh
-whoisd -t -config=test/testconfig.conf -mapping=test/testmapping.json
+make check
 ```
 
-### Running
+## Running
 
-Start of whoisd:
+Deploy and run into Kubernetes:
 
 ```sh
-sudo whoisd
+make deploy
 ```
-or start as daemon
+
+Locally in docker:
+
+```sh
+make run
+```
+
+As daemon:
+
 ```sh
 sudo whoisd install
 sudo whoisd start
@@ -43,13 +44,13 @@ sudo whoisd start
 
 This will bring up whoisd listening on port 43 for client communication.
 
-### Examples
+## Examples
 
 Examples of using Elasticsearch and MySQL backends in [examples/README.md](examples/README.md)
 
-### Usage
+## Usage
 
-```
+```txt
 whoisd - Whois Daemon
 
 Usage:
@@ -85,7 +86,7 @@ Options:
   -table=<name>     Storage type or table name
 ```
 
-### Config
+## Config
 
 The config file should be in /etc/whoisd/whoisd.conf. Of course possible to load config settings from any other place through -config option. If config file is absent, used predefined configuration below: 
 
@@ -106,18 +107,22 @@ The config file should be in /etc/whoisd/whoisd.conf. Of course possible to load
   }
 }
 ```
-_NOTE_: Valid storage types: Elasticsearch, Mysql, Dummy. Dummy storage has two records for testing: "example.tld" and "google.com". You can test it: 
+
+_NOTE_: Valid storage types: Elasticsearch, Mysql, Dummy. Dummy storage has two records for testing: "example.tld" and "google.com". You can test it:
+
 ```sh
 whois -h localhost example.tld
 ```
+
 or
+
 ```sh
 whois -h localhost google.com
 ```
+
 These fixtures placed in "storage" package directory.
 
-
-### Mapping
+## Mapping
 
 All required fields for whoisd must be defined in the mapping file. The mapping file represent all fields in your database as key names in the whoisd. The mapping file should be in /etc/whoisd/conf.d/mapping.json. It possible to load mapping file through -mapping option. The context of the mapping file is described below:
 
@@ -140,7 +145,7 @@ All required fields for whoisd must be defined in the mapping file. The mapping 
         "key": "Registrar WHOIS Server: ",
         "value": ["whois.yourwhois.eu"]
       }
-
+    }
   },
   {
     "TLDs": ["com", "net"],
@@ -159,7 +164,7 @@ All required fields for whoisd must be defined in the mapping file. The mapping 
         "key": "Registrar WHOIS Server: ",
         "value": ["whois.yourwhois.eu"]
       }
-
+    }
   }
 ]
 ```
@@ -180,7 +185,7 @@ All required fields for whoisd must be defined in the mapping file. The mapping 
         "name": ["creationDate"],
         "format": "{date}",
         "related": "name"
-      }
+      },
       "06": {
         "key": "Expiration Date: ",
         "name": ["expirationDate"],
@@ -221,11 +226,13 @@ All required fields for whoisd must be defined in the mapping file. The mapping 
 ```
 
 - "multiple" - if this option is set to 'true', each value will be repeated in whois output with the same label like that:
-```
+
+```txt
 Name Server: ns1.example.com
 Name Server: ns2.example.com
 Name Server: ns3.example.com
 ```
+
 - "relatedBy" - a name of the field in a database through which related a request for 
 - "relatedTo" - a name of the table/type in a database through which made a relation
 
@@ -343,8 +350,7 @@ Name Server: ns3.example.com
 ]
 ```
 
-- a example of formating where used undefined tag "{date}", because a name of the field has not present, "{date}" will be replaced by CURRENT date in RFC3339 format
-
+- an example of formating where used undefined tag "{date}", because a name of the field has not present, "{date}" will be replaced by CURRENT date in RFC3339 format
 
 ## Todo
 
@@ -352,15 +358,15 @@ Name Server: ns3.example.com
 - Rest API
 - update storage records by Rest API
 
-
 ## Contributors (unsorted)
 
- - [Igor Dolzhikov](https://github.com/takama)
- - [Armin Pech](https://github.com/pecharmin)
- - [Rafael Fernández López](https://github.com/ereslibre)
- - [Andrei Dumitriu](https://github.com/tespio)
+- [Igor Dolzhikov](https://github.com/takama)
+- [Armin Pech](https://github.com/pecharmin)
+- [Rafael Fernández López](https://github.com/ereslibre)
+- [Andrei Dumitriu](https://github.com/tespio)
 
 All the contributors are welcome. If you would like to be the contributor please accept some rules.
+
 - The pull requests will be accepted only in "develop" branch
 - All modifications or additions should be tested
 
